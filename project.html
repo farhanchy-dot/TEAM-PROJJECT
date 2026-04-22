@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Autism Resources & Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .background-shapes {
+            position: fixed;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+            top: -10%;
+            left: -10%;
+            z-index: -1;
+            animation: pulse 10s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border-radius: 16px;
+        }
+
+        .glass-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo span {
+            color: #0056b3;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0056b3;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 5%;
+            background: url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            padding: 60px 40px;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn,
+        .filter-button {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            background: #0056b3;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #004494;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            border: 2px solid #0056b3;
+            color: #0056b3;
+        }
+
+        .secondary-btn:hover {
+            background: #0056b3;
+            color: white;
+        }
+
+        .info-section {
+            display: flex;
+            gap: 40px;
+            padding: 80px 5%;
+            align-items: center;
+        }
+
+        .info-text {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .info-text h2 {
+            color: #003366;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .info-text p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .info-image {
+            flex: 1;
+        }
+
+        .info-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .services-section {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #003366;
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 30px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .resource-tools {
+            max-width: 1100px;
+            margin: 0 auto 35px;
+            padding: 25px;
+            text-align: left;
+        }
+
+        .resource-tools label {
+            display: block;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .resource-tools input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(0, 86, 179, 0.15);
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .resource-tools input:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.12);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .filter-button {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 86, 179, 0.2);
+            color: #0056b3;
+        }
+
+        .filter-button:hover {
+            background: #e8f1ff;
+        }
+
+        .filter-button.active {
+            background: #0056b3;
+            color: white;
+            border-color: #0056b3;
+        }
+
+        .resource-card.hidden {
+            display: none;
+        }
+
+        .results-note {
+            max-width: 1100px;
+            margin: 22px auto 0;
+            text-align: left;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .faq-list {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        .faq-item {
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 22px 26px;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #003366;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #0056b3;
+        }
+
+        .faq-item.open .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 26px;
+            transition: max-height 0.3s ease, padding-bottom 0.3s ease;
+        }
+
+        .faq-answer p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 220px;
+            padding-bottom: 22px;
+        }
+
+        footer {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 51, 102, 0.95);
+            color: white;
+            padding: 20px 5%;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cookie-content p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .cookie-content a {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+        .cookie-btn {
+            background: #ffcc00;
+            color: #003366;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cookie-btn:hover {
+            background: #e6b800;
+        }
+
+        @media (max-width: 768px) {
+            .info-section {
+                flex-direction: column;
+            }
+
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+
+            .cookie-banner {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .filter-button {
+                width: calc(50% - 6px);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .nav-links {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .primary-btn,
+            .secondary-btn,
+            .filter-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-shapes"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">AutismSupport<span>UK</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="resources.html" class="active">UK Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="glass-card hero-content">
+            <h1>UK Autism Resources You Can Trust</h1>
+            <p>
+                Explore guidance for diagnosis, NHS pathways, EHCP support, communication tools,
+                family wellbeing, and local community services across the United Kingdom.
+            </p>
+            <div class="hero-buttons">
+                <button class="primary-btn" id="exploreBtn">Explore Resources</button>
+                <button class="secondary-btn" id="guideBtn">Read Our Guide</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="info-section">
+        <div class="info-text glass-card">
+            <h2>Find the right support faster</h2>
+            <p>
+                This resource page is designed for autistic people, parents, carers, teachers,
+                and professionals who need clear starting points for trusted autism support in the UK.
+            </p>
+            <p>
+                Whether you are looking for assessment guidance, school support, post-diagnostic help,
+                or community organisations, this page helps visitors find useful information without
+                feeling overwhelmed.
+            </p>
+        </div>
+
+        <div class="info-image">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+                 alt="People reviewing helpful autism support resources together">
+        </div>
+    </section>
+
+    <section class="services-section">
+        <h2 class="section-title">Featured UK Support Areas</h2>
+
+        <div class="services-grid">
+            <div class="service-card glass-card">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80"
+                     alt="Medical professional providing guidance">
+                <h3>NHS Pathway Guidance</h3>
+                <p>
+                    Clear information about GP referrals, autism assessments, waiting lists,
+                    and what families can expect during the NHS pathway.
+                </p>
+            </div>
+
+            <div class="service-card glass-card">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80"
+                     alt="Education support materials">
+                <h3>Education & EHCP Support</h3>
+                <p>
+                    Guidance on school support, reasonable adjustments, and understanding
+                    Education, Health and Care Plans for children and young people.
+                </p>
+            </div>
+
+            <div class="service-card glass-card">
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=500&q=80"
+                     alt="Community support group meeting">
+                <h3>Community & Family Networks</h3>
+                <p>
+                    Find local groups, sensory-friendly spaces, peer support, and trusted
+                    organisations offering help in different UK regions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="resource-browser">
+        <h2 class="section-title">Browse All Resources</h2>
+
+        <div class="resource-tools glass-card">
+            <label for="resourceSearch">Search resources</label>
+            <input type="search" id="resourceSearch" placeholder="Try: diagnosis, school, family, sensory">
+
+            <div class="filter-group" aria-label="Filter resources by category">
+                <button class="filter-button active" data-filter="all">All</button>
+                <button class="filter-button" data-filter="diagnosis">Diagnosis</button>
+                <button class="filter-button" data-filter="education">Education</button>
+                <button class="filter-button" data-filter="family">Family</button>
+                <button class="filter-button" data-filter="communication">Communication</button>
+                <button class="filter-button" data-filter="daily-life">Daily Life</button>
+                <button class="filter-button" data-filter="advocacy">Advocacy</button>
+            </div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card glass-card resource-card"
+                 data-category="diagnosis"
+                 data-keywords="assessment diagnosis NHS GP referral healthcare">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=500&q=80"
+                     alt="Healthcare appointment discussion">
+                <h3>Assessment and Diagnosis</h3>
+                <p>
+                    Share information about referrals, assessment pathways, waiting times,
+                    and preparing for diagnostic appointments.
+                </p>
+            </div>
+
+            <div class="service-card glass-card resource-card"
+                 data-category="education"
+                 data-keywords="school EHCP teachers SEN education support">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=500&q=80"
+                     alt="Student support in a classroom">
+                <h3>School and Learning Support</h3>
+                <p>
+                    Include resources for teachers, parents, and students around classroom strategies,
+                    exam support, and inclusive learning.
+                </p>
+            </div>
+
+            <div class="service-card glass-card resource-card"
+                 data-category="family"
+                 data-keywords="parents carers siblings family wellbeing community">
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=500&q=80"
+                     alt="Family support and connection">
+                <h3>Family and Carer Support</h3>
+                <p>
+                    Add practical guidance, emotional wellbeing tools, and trusted support groups
+                    for parents, carers, and siblings.
+                </p>
+            </div>
+
+            <div class="service-card glass-card resource-card"
+                 data-category="communication"
+                 data-keywords="AAC speech language visual supports communication">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=500&q=80"
+                     alt="Communication and learning resources">
+                <h3>Communication Resources</h3>
+                <p>
+                    Include AAC guidance, speech and language support, visual schedules,
+                    and social stories that improve communication clarity.
+                </p>
+            </div>
+
+            <div class="service-card glass-card resource-card"
+                 data-category="daily-life"
+                 data-keywords="routine sensory daily life transitions self-care">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80"
+                     alt="Calm daily routine planning">
+                <h3>Daily Life and Sensory Support</h3>
+                <p>
+                    Help visitors find routine strategies, sensory regulation tools,
+                    and practical ideas for home and community settings.
+                </p>
+            </div>
+
+            <div class="service-card glass-card resource-card"
+                 data-category="advocacy"
+                 data-keywords="rights accessibility advocacy employment independence">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80"
+                     alt="Adults working together and planning support">
+                <h3>Rights and Advocacy</h3>
+                <p>
+                    Point visitors to workplace support, legal rights, accessibility guidance,
+                    and services that promote independence.
+                </p>
+            </div>
+        </div>
+
+        <p class="results-note" id="resultsNote">Showing all resources.</p>
+    </section>
+
+    <section class="services-section" id="guide-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+
+        <div class="faq-list">
+            <div class="faq-item glass-card">
+                <button class="faq-question" type="button" aria-expanded="false">
+                    Who is this page for?
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        This page is for autistic people, families, carers, educators, and professionals
+                        looking for trusted autism-related guidance and support in the UK.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-card">
+                <button class="faq-question" type="button" aria-expanded="false">
+                    Can I add local organisations to this page?
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes. Replace the example cards with local NHS trusts, charities, support groups,
+                        councils, schools, and autism-friendly services relevant to your area.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-card">
+                <button class="faq-question" type="button" aria-expanded="false">
+                    How do the search and filter tools work?
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Visitors can type keywords into the search bar or press a category button
+                        to narrow the resource cards to the most relevant type of support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>
+                <strong>We value your privacy.</strong> We use cookies to enhance your browsing experience,
+                serve personalized content, and analyze our traffic in accordance with UK GDPR guidelines.
+                <a href="#">Read our Privacy Policy</a>.
+            </p>
+        </div>
+        <button id="accept-cookies" class="cookie-btn">Accept Cookies</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Autism Support UK. Providing guidance across the United Kingdom.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.querySelector("#resourceSearch");
+        const filterButtons = document.querySelectorAll(".filter-button");
+        const resourceCards = document.querySelectorAll(".resource-card");
+        const resultsNote = document.querySelector("#resultsNote");
+        const faqItems = document.querySelectorAll(".faq-item");
+        const exploreBtn = document.querySelector("#exploreBtn");
+        const guideBtn = document.querySelector("#guideBtn");
+        const cookieBanner = document.querySelector("#cookie-banner");
+        const acceptCookiesBtn = document.querySelector("#accept-cookies");
+        const resourceBrowser = document.querySelector("#resource-browser");
+
+        let activeFilter = "all";
+        let hasAutoScrolledFromSearch = false;
+
+        function updateResources() {
+          const searchTerm = searchInput.value.trim().toLowerCase();
+          let visibleCount = 0;
+
+          resourceCards.forEach((card) => {
+            const category = card.dataset.category;
+            const content = `${card.textContent} ${card.dataset.keywords}`.toLowerCase();
+            const matchesFilter = activeFilter === "all" || activeFilter === category;
+            const matchesSearch = content.includes(searchTerm);
+            const showCard = matchesFilter && matchesSearch;
+
+            card.classList.toggle("hidden", !showCard);
+
+            if (showCard) {
+              visibleCount += 1;
+            }
+          });
+
+          if (visibleCount === resourceCards.length) {
+            resultsNote.textContent = "Showing all resources.";
+            return;
+          }
+
+          if (visibleCount === 0) {
+            resultsNote.textContent = "No resources match this search yet. Try another keyword or category.";
+            return;
+          }
+
+          resultsNote.textContent = `Showing ${visibleCount} resource${visibleCount === 1 ? "" : "s"}.`;
+        }
+
+        function handleSearchInput() {
+          updateResources();
+
+          if (searchInput.value.trim() !== "" && !hasAutoScrolledFromSearch) {
+            resourceBrowser.scrollIntoView({ behavior: "smooth", block: "start" });
+            hasAutoScrolledFromSearch = true;
+          }
+
+          if (searchInput.value.trim() === "") {
+            hasAutoScrolledFromSearch = false;
+          }
+        }
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            activeFilter = button.dataset.filter;
+
+            filterButtons.forEach((item) => item.classList.remove("active"));
+            button.classList.add("active");
+
+            updateResources();
+          });
+        });
+
+        searchInput.addEventListener("input", handleSearchInput);
+
+        faqItems.forEach((item) => {
+          const button = item.querySelector(".faq-question");
+
+          button.addEventListener("click", () => {
+            const isOpen = item.classList.contains("open");
+
+            faqItems.forEach((faq) => {
+              faq.classList.remove("open");
+              faq.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+            });
+
+            if (!isOpen) {
+              item.classList.add("open");
+              button.setAttribute("aria-expanded", "true");
+            }
+          });
+        });
+
+        exploreBtn.addEventListener("click", () => {
+          document.querySelector("#resource-browser").scrollIntoView({ behavior: "smooth" });
+        });
+
+        guideBtn.addEventListener("click", () => {
+          document.querySelector("#guide-section").scrollIntoView({ behavior: "smooth" });
+        });
+
+        if (!localStorage.getItem("autismSupportCookiesAccepted")) {
+          cookieBanner.style.display = "flex";
+        }
+
+        acceptCookiesBtn.addEventListener("click", () => {
+          localStorage.setItem("autismSupportCookiesAccepted", "true");
+          cookieBanner.style.display = "none";
+        });
+
+        updateResources();
+    </script>
+</body>
+</html>
